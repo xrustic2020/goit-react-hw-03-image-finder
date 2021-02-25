@@ -1,15 +1,36 @@
+import { Component } from 'react';
+import { createPortal } from 'react-dom';
 import s from './ImageGalleryItem.module.css';
-const { Component } = require('react');
+import Modal from 'components/Modal';
+
+const modalRoot = document.querySelector('#modal-root');
 
 class ImageGalleryItem extends Component {
+  state = {
+    isOpen: false,
+  };
+
+  toggleModal = () => {
+    this.setState(prev => ({ isOpen: !prev.isOpen }));
+  };
+
   render() {
     return (
-      <li className={s.ImageGalleryItem}>
+      <li className={s.ImageGalleryItem} onClick={this.toggleModal}>
         <img
           src={this.props.image}
-          alt=""
+          alt={this.props.name}
           className={s['ImageGalleryItem-image']}
         />
+        {this.state.isOpen &&
+          createPortal(
+            <Modal
+              image={this.props.largeImage}
+              alt={this.props.name}
+              onClose={this.toggleModal}
+            />,
+            modalRoot,
+          )}
       </li>
     );
   }
