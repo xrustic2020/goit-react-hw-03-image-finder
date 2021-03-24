@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 import s from './ImageGalleryItem.module.css';
 import Modal from 'components/Modal';
 
@@ -35,5 +36,11 @@ class ImageGalleryItem extends Component {
     );
   }
 }
+
+ImageGalleryItem.propTypes = {
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  largeImage: PropTypes.string.isRequired,
+};
 
 export default ImageGalleryItem;

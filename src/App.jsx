@@ -11,7 +11,7 @@ import API from './services/Api';
 export default class App extends Component {
   state = {
     query: '',
-    data: null, // change null []
+    data: null,
     page: 1,
     isLoading: false,
   };

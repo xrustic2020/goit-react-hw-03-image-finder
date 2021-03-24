@@ -1,15 +1,10 @@
 import { Component } from 'react';
-
 import s from './ImageGallery.module.css';
-
+import PropTypes from 'prop-types';
 import ImageGalleryItem from './ImageGalleryItem';
-
 import Button from 'components/Button';
 
 class ImageGallery extends Component {
-  // componentDidUpdate() {
-  //   console.log('Обновился ImageGallery');
-  // }
   render() {
     return (
       <>
@@ -38,5 +33,11 @@ class ImageGallery extends Component {
     );
   }
 }
+
+ImageGallery.propTypes = {
+  data: PropTypes.array,
+  onNextPage: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired,
+};
 
 export default ImageGallery;
