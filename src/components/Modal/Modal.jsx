@@ -6,7 +6,7 @@ const Modal = ({ image, alt, onClose }) => {
   useEffect(() => {
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, []);
+  });
 
   const handler = evt => {
     if (evt.code === 'Escape' || evt.currentTarget !== evt.target) {
@@ -22,32 +22,6 @@ const Modal = ({ image, alt, onClose }) => {
     </div>
   );
 };
-
-// class Modal extends Component {
-//   componentDidMount() {
-//     window.addEventListener('keydown', this.handler);
-//   }
-
-//   componentWillUnmount() {
-//     window.removeEventListener('keydown', this.handler);
-//   }
-
-//   handler = evt => {
-//     if (evt.code === 'Escape' || evt.currentTarget !== evt.target) {
-//       this.props.onClose();
-//     }
-//   };
-
-//   render() {
-//     return (
-//       <div className={s.Overlay} onClick={this.handler}>
-//         <div className={s.Modal}>
-//           <img src={this.props.image} alt={this.props.alt} />
-//         </div>
-//       </div>
-//     );
-//   }
-// }
 
 Modal.propTypes = {
   image: PropTypes.string,
